@@ -32,9 +32,6 @@ const project = new ConstructLibraryCdk8s({
     'json-schema@^0.3.0',
   ],
 
-
-
-
   dependabot: false,
   gitignore: ['package.json', 'test/'],
   pullRequestTemplate: false,
