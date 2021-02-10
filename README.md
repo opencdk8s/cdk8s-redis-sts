@@ -18,7 +18,7 @@ import { MyRedis } from 'cdk8s-redis-sts';
 export class MyChart extends Chart {
   constructor(scope: Construct, id: string, props: ChartProps = { }) {
     super(scope, id, props);
-    new ServiceDeployment(this, 'dev', {
+    new MyMongo(this, 'dev', {
         image: 'redis',
         namespace: 'databases',
         volumeSize: '10Gi',
@@ -146,21 +146,16 @@ spec:
 
 ### TypeScript
 
-Use `npm` or `yarn` to install.
+Use `yarn` to install.
 
-```shell
-$ npm install @hunter-thompson/cdk8s-redis-sts@$VERSION_NUMBER
-```
 
-or
-
-```shell
+```sh
 $ yarn add @hunter-thompson/cdk8s-redis-sts@$VERSION_NUMBER
 ```
 
 ### Python
 
-```shell
+```sh
 $ pip install cdk8s-redis-sts
 ```
 
