@@ -28,7 +28,7 @@ export class MyChart extends Chart {
 }
 
 const app = new App();
-new MyChart(app, 'asd');
+new MyChart(app, 'dev');
 app.synth();
 ```
 
