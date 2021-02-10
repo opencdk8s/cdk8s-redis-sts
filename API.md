@@ -4,7 +4,7 @@
 
 Name|Description
 ----|-----------
-[ServiceDeployment](#cdk8s-redis-sts-servicedeployment)|*No description*
+[MyRedis](#cdk8s-redis-sts-myredis)|*No description*
 
 
 **Structs**
@@ -17,7 +17,7 @@ Name|Description
 
 
 
-## class ServiceDeployment 🔹 <a id="cdk8s-redis-sts-servicedeployment"></a>
+## class MyRedis 🔹 <a id="cdk8s-redis-sts-myredis"></a>
 
 
 
@@ -30,7 +30,7 @@ __Extends__: [Construct](#constructs-construct)
 
 
 ```ts
-new ServiceDeployment(scope: Construct, name: string, opts: StsOpts)
+new MyRedis(scope: Construct, name: string, opts: StsOpts)
 ```
 
 * **scope** (<code>[Construct](#constructs-construct)</code>)  *No description*

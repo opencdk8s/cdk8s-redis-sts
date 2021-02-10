@@ -52,7 +52,6 @@ data:
     slaveof dev 6379
 ```
 
-See [this](https://kubernetes.io/docs/concepts/configuration/secret/) for documentation on Kubernetes secrets.
 
 Then the Kubernetes manifests created by `cdk8s synth` command will have Kubernetes resources such as `Statefulset`, and `Service` as follows.
 

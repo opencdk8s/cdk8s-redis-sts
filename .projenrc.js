@@ -15,7 +15,7 @@ const project = new ConstructLibraryCdk8s({
     module: 'cdk8s_redis_sts',
   },
   peerDeps: ['constructs@^3.3.5'],
-  releaseEveryCommit: true,
+  releaseEveryCommit: false,
   devDeps: [
     'constructs@^3.3.5',
     'prettier@^2.2.1',
