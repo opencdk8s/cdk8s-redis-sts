@@ -149,13 +149,13 @@ spec:
 Use `npm` or `yarn` to install.
 
 ```shell
-$ npm install -s cdk8s-redis-sts
+$ npm install @hunter-thompson/cdk8s-redis-sts@$VERSION_NUMBER
 ```
 
 or
 
 ```shell
-$ yarn add cdk8s-redis-sts
+$ yarn add @hunter-thompson/cdk8s-redis-sts@$VERSION_NUMBER
 ```
 
 ### Python
