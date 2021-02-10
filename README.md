@@ -146,11 +146,14 @@ spec:
 
 ### TypeScript
 
-Use `yarn` to install.
-
+Use `yarn` or `npm` to install.
 
 ```sh
-$ yarn add @hunter-thompson/cdk8s-redis-sts@$VERSION_NUMBER
+$ npm install cdk8s-redis-sts
+```
+
+```sh
+$ yarn add cdk8s-redis-sts
 ```
 
 ### Python
