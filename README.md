@@ -16,7 +16,7 @@ import { App, Chart, ChartProps } from 'cdk8s';
 import { MyRedis } from 'cdk8s-redis-sts';
 
 export class MyChart extends Chart {
-  constructor(scope: Construct, id: string, props: ChartProps = { }) {
+  constructor(scope: Construct, id: string, props: RedisProps = { }) {
     super(scope, id, props);
     new MyRedis(this, 'dev', {
         image: 'redis',
