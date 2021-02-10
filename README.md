@@ -49,7 +49,7 @@ data:
     daemonize no
     supervised no
   slave.conf: |
-    slaveof dev 6379
+    slaveof dev 6379 # dev should be the name of your service
 ```
 
 
