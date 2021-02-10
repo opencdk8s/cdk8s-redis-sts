@@ -18,7 +18,7 @@ import { MyRedis } from 'cdk8s-redis-sts';
 export class MyChart extends Chart {
   constructor(scope: Construct, id: string, props: ChartProps = { }) {
     super(scope, id, props);
-    new MyMongo(this, 'dev', {
+    new MyRedis(this, 'dev', {
         image: 'redis',
         namespace: 'databases',
         volumeSize: '10Gi',
