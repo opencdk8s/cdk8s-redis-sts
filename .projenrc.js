@@ -7,7 +7,7 @@ const project = new ConstructLibraryCdk8s({
   defaultReleaseBranch: 'development',
   stability: 'experimental',
   jsiiFqn: 'projen.ConstructLibraryCdk8s',
-  name: '@Hunter-Thompson/cdk8s-redis-sts',
+  name: 'cdk8s-redis-sts',
   repositoryUrl: 'https://github.com/Hunter-Thompson/cdk8s-redis-sts',
 
   python: {
@@ -37,7 +37,6 @@ const project = new ConstructLibraryCdk8s({
   pullRequestTemplate: false,
   releaseBranches: ['development'],
   codeCov: true,
-  npmRegistry: 'npm.pkg.github.com',
   clobber: false,
   readme: true,
 });

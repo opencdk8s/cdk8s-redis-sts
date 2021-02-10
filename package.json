@@ -1,5 +1,5 @@
 {
-  "name": "@Hunter-Thompson/cdk8s-redis-sts",
+  "name": "cdk8s-redis-sts",
   "repository": {
     "type": "git",
     "url": "https://github.com/Hunter-Thompson/cdk8s-redis-sts"
@@ -66,9 +66,6 @@
   "main": "lib/index.js",
   "license": "Apache-2.0",
   "version": "0.0.2",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "jest": {
     "testMatch": [
       "**/__tests__/**/*.ts?(x)",
