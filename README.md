@@ -1,6 +1,6 @@
 # cdk8s-redis-sts  ![Release](https://github.com/Hunter-Thompson/cdk8s-redis-sts/workflows/Release/badge.svg?branch=development)
 
-Create a Replicated, Redis Statefulset on Kubernetes, powered by the [cdk8s project](https://cdk8s.io) 🚀
+Create a Replicated Redis Statefulset on Kubernetes, powered by the [cdk8s project](https://cdk8s.io) 🚀
 
 ## Disclaimer 
 
