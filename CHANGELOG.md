@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/opencdk8s/cdk8s-redis-sts/compare/v0.0.4...v0.0.5) (2021-02-11)
+
+
+### Bug Fixes
+
+* revert last commit ([0713622](https://github.com/opencdk8s/cdk8s-redis-sts/commit/07136222f27b48da03e2a26ad6079fc7638cab59))
+
 ### [0.0.4](https://github.com/opencdk8s/cdk8s-redis-sts/compare/v0.0.3...v0.0.4) (2021-02-11)
 
 ### [0.0.3](https://github.com/Hunter-Thompson/cdk8s-redis-sts/compare/v0.0.2...v0.0.3) (2021-02-10)
