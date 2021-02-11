@@ -1,5 +1,5 @@
 {
-  "name": "@opencdk8s/cdk8s-redis-sts",
+  "name": "cdk8s-redis-sts",
   "repository": {
     "type": "git",
     "url": "https://github.com/opencdk8s/cdk8s-redis-sts"

@@ -7,7 +7,7 @@ const project = new ConstructLibraryCdk8s({
   defaultReleaseBranch: 'development',
   stability: 'experimental',
   jsiiFqn: 'projen.ConstructLibraryCdk8s',
-  name: '@opencdk8s/cdk8s-redis-sts',
+  name: 'cdk8s-redis-sts',
   repositoryUrl: 'https://github.com/opencdk8s/cdk8s-redis-sts',
 
   python: {
