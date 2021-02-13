@@ -157,11 +157,11 @@ spec:
 Use `yarn` or `npm` to install.
 
 ```sh
-$ npm install cdk8s-redis-sts
+$ npm install @opencdk8s/cdk8s-redis-sts
 ```
 
 ```sh
-$ yarn add cdk8s-redis-sts
+$ yarn add @opencdk8s/cdk8s-redis-sts
 ```
 
 ### Python
