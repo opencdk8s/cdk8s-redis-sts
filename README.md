@@ -1,4 +1,4 @@
-# cdk8s-redis-sts  ![Release](https://github.com/Hunter-Thompson/cdk8s-redis-sts/workflows/Release/badge.svg?branch=development)
+# cdk8s-redis-sts  ![Release](https://github.com/opencdk8s/cdk8s-redis-sts/workflows/Release/badge.svg?branch=development)
 
 Create a Replicated Redis Statefulset on Kubernetes, powered by the [cdk8s project](https://cdk8s.io) 🚀
 
@@ -13,16 +13,24 @@ This construct is under heavy development, and breaking changes will be introduc
 ```typescript
 import { Construct } from 'constructs';
 import { App, Chart, ChartProps } from 'cdk8s';
-import { MyRedis } from 'cdk8s-redis-sts';
+import { MyRedis } from '@opencdk8s/cdk8s-redis-sts';
 
 export class MyChart extends Chart {
-  constructor(scope: Construct, id: string, props: RedisProps = { }) {
+  constructor(scope: Construct, id: string, props: ChartProps = { }) {
     super(scope, id, props);
     new MyRedis(this, 'dev', {
         image: 'redis',
         namespace: 'databases',
         volumeSize: '10Gi',
         replicas: 2,
+        createStorageClass: true,
+        volumeProvisioner: 'kubernetes.io/aws-ebs',
+        storageClassName: "io1-slow",
+        storageClassParams: {
+          type: 'io1',
+          fsType: 'ext4',
+          iopsPerGB: "10",
+        },
     });
     }
 }

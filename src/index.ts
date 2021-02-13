@@ -20,6 +20,31 @@ export interface StsOpts {
   readonly namespace: string;
 
   /**
+   * Option to create storage class, if enabled, a storage class will be created for the statefulset
+   * @default true
+   */
+  readonly createStorageClass?: boolean;
+
+  /**
+   * The storage class to use for our PVC
+   * @default 'gp2-expandable'
+   */
+  readonly storageClassName?: string;
+
+  /**
+   * Each StorageClass has a provisioner that determines what volume plugin is used for provisioning PVs. This field must be specified.
+   * See [this](https://kubernetes.io/docs/concepts/storage/storage-classes/#provisioner) for Ref
+   * @default 'kubernetes.io/aws-ebs'
+   */
+  readonly volumeProvisioner?: string;
+
+  /**
+   * Storage class params
+   * @default - { type = gp2, fsType: ext4 }
+   */
+  readonly storageClassParams?: { [name: string]: string };
+
+  /**
    * nodeSelector params
    * @default - undefined
    */
@@ -37,12 +62,6 @@ export interface StsOpts {
    */
   readonly resources?: ResourceRequirements;
 
-
-  /**
-   * The storage class to use for our PVC
-   * @default 'gp2-expandable'
-   */
-  readonly storageClassName?: string;
 
   /**
    * The Volume size of our DB in string, e.g 10Gi, 20Gi
@@ -93,6 +112,9 @@ export class MyRedis extends Construct {
 
     const namespace = opts.namespace ?? 'default';
     this.namespace = namespace;
+    var storageClassName = opts.storageClassName ?? 'gp2';
+    const volumeProvisioner = opts.volumeProvisioner ?? 'kubernetes.io/aws-ebs';
+    const storageClassParams = opts.storageClassParams ?? { type: 'gp2', fsType: 'ext4' };
     const volumeRequest = {
       storage: k8s.Quantity.fromString(String(opts.volumeSize)),
     };
@@ -114,6 +136,23 @@ export class MyRedis extends Construct {
       ...opts.labels,
       app: name,
     };
+
+    if (opts.createStorageClass === true) {
+      const storageClassOpts: k8s.KubeStorageClassProps = {
+        metadata: {
+          name: storageClassName,
+        },
+        provisioner: volumeProvisioner,
+        allowVolumeExpansion: true,
+        reclaimPolicy: 'Retain',
+        parameters: {
+          ...storageClassParams,
+        },
+      };
+      const storageclass = new k8s.KubeStorageClass(this, 'storageclass', storageClassOpts);
+      this.name = storageclass.name;
+      var storageClassName = storageclass.name;
+    }
 
     const serviceOpts: k8s.KubeServiceProps = {
       metadata: {
@@ -138,7 +177,7 @@ export class MyRedis extends Construct {
       },
       spec: {
         accessModes: ['ReadWriteOnce'],
-        storageClassName: opts.storageClassName,
+        storageClassName: storageClassName,
         resources: {
           requests: volumeRequest,
         },
