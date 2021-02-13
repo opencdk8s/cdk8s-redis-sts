@@ -67,6 +67,18 @@ Then the Kubernetes manifests created by `cdk8s synth` command will have Kuberne
 <summary>manifest.k8s.yaml</summary>
 
 ```yaml
+allowVolumeExpansion: true
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: io1-slow
+parameters:
+  fsType: ext4
+  iopsPerGB: "10"
+  type: io1
+provisioner: kubernetes.io/aws-ebs
+reclaimPolicy: Retain
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -108,10 +120,8 @@ spec:
               [[ `hostname` =~ -([0-9]+)$ ]] || exit 1
               ordinal=${BASH_REMATCH[1]}
               if [[ $ordinal -eq 0 ]]; then
-              echo "starting master"
               redis-server /mnt/redis/master.conf
               else
-              echo "starting slave"
               redis-server /mnt/redis/slave.conf
               fi
           env: []
@@ -146,6 +156,8 @@ spec:
         resources:
           requests:
             storage: 10Gi
+        storageClassName: io1-slow
+
 ```
 
 </details>
@@ -172,7 +184,7 @@ $ pip install cdk8s-redis-sts
 
 ## Contribution
 
-1. Fork ([https://github.com/Hunter-Thompson/cdk8s-mongo-sts/fork](https://github.com/Hunter-Thompson/cdk8s-redis-sts/fork))
+1. Fork ([link](https://github.com/opencdk8s/cdk8s-redis-sts/fork))
 2. Bootstrap the repo:
   
     ```bash
