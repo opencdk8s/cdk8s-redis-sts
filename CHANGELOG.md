@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/opencdk8s/cdk8s-redis-sts/compare/v0.0.5...v0.0.6) (2021-02-13)
+
+
+### Features
+
+* option to create storage class ([#5](https://github.com/opencdk8s/cdk8s-redis-sts/issues/5)) ([cbab1cc](https://github.com/opencdk8s/cdk8s-redis-sts/commit/cbab1cc2b5b6776bbcfb68fd0b31221733c65688))
+
 ### [0.0.5](https://github.com/opencdk8s/cdk8s-redis-sts/compare/v0.0.4...v0.0.5) (2021-02-11)
 
 
