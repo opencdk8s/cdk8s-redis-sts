@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/opencdk8s/cdk8s-redis-sts/compare/v0.0.6...v0.0.7) (2021-02-15)
+
+
+### Features
+
+* **cm:** create configmap if not specified ([#6](https://github.com/opencdk8s/cdk8s-redis-sts/issues/6)) ([1fedde6](https://github.com/opencdk8s/cdk8s-redis-sts/commit/1fedde683cf7fde8cf4a742127352654f9bad1e4))
+
 ### [0.0.6](https://github.com/opencdk8s/cdk8s-redis-sts/compare/v0.0.5...v0.0.6) (2021-02-13)
 
 
