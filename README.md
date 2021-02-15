@@ -40,28 +40,7 @@ new MyChart(app, 'dev');
 app.synth();
 ```
 
-Create a configmap for your redis statefulset with the same name as your statefulset :
-
-```
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: dev
-data:
-  master.conf: |
-    bind 0.0.0.0
-    port 6379
-    tcp-backlog 511
-    timeout 0
-    tcp-keepalive 300
-    daemonize no
-    supervised no
-  slave.conf: |
-    slaveof dev 6379 # dev should be the name of your service
-```
-
-
-Then the Kubernetes manifests created by `cdk8s synth` command will have Kubernetes resources such as `Statefulset`, and `Service` as follows.
+Then the Kubernetes manifests created by `cdk8s synth` command will have Kubernetes resources such as `Statefulset`, `ConfigMap` and `Service` as follows.
 
 <details>
 <summary>manifest.k8s.yaml</summary>
@@ -78,6 +57,24 @@ parameters:
   type: io1
 provisioner: kubernetes.io/aws-ebs
 reclaimPolicy: Retain
+---
+apiVersion: v1
+data:
+  master.conf: |-
+    
+    bind 0.0.0.0
+    daemonize no
+    port 6379
+    tcp-backlog 511
+    timeout 0
+    tcp-keepalive 300
+    supervised no
+  slave.conf: |-
+    
+    slaveof dev 6379
+kind: ConfigMap
+metadata:
+  name: dev-redis-conf
 ---
 apiVersion: v1
 kind: Service
@@ -157,7 +154,6 @@ spec:
           requests:
             storage: 10Gi
         storageClassName: io1-slow
-
 ```
 
 </details>

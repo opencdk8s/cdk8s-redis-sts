@@ -32,6 +32,11 @@ export interface StsOpts {
   readonly storageClassName?: string;
 
   /**
+   * The name of the configmap to use instead of the default one
+   */
+  readonly configMapName?: string;
+
+  /**
    * Each StorageClass has a provisioner that determines what volume plugin is used for provisioning PVs. This field must be specified.
    * See [this](https://kubernetes.io/docs/concepts/storage/storage-classes/#provisioner) for Ref
    * @default 'kubernetes.io/aws-ebs'
@@ -112,6 +117,7 @@ export class MyRedis extends Construct {
 
     const namespace = opts.namespace ?? 'default';
     this.namespace = namespace;
+    var configMapName = opts.configMapName ?? name;
     var storageClassName = opts.storageClassName ?? 'gp2';
     const volumeProvisioner = opts.volumeProvisioner ?? 'kubernetes.io/aws-ebs';
     const storageClassParams = opts.storageClassParams ?? { type: 'gp2', fsType: 'ext4' };
@@ -152,6 +158,31 @@ export class MyRedis extends Construct {
       const storageclass = new k8s.KubeStorageClass(this, 'storageclass', storageClassOpts);
       this.name = storageclass.name;
       var storageClassName = storageclass.name;
+    }
+
+    if (configMapName != name) {
+      // pass
+    } else {
+      const configMapOpts: k8s.KubeConfigMapProps = {
+        metadata: {
+          name: `${name}-redis-conf`,
+          namespace: namespace,
+        },
+        data: {
+          'master.conf':
+          '\nbind 0.0.0.0' +
+          '\ndaemonize no' +
+          '\nport 6379' +
+          '\ntcp-backlog 511' +
+          '\ntimeout 0' +
+          '\ntcp-keepalive 300' +
+          '\nsupervised no',
+          'slave.conf': `\nslaveof ${name} 6379`,
+        },
+      };
+      const configmap = new k8s.KubeConfigMap(this, 'cm', configMapOpts);
+      this.name = configmap.name;
+      var configMapName = configmap.name;
     }
 
     const serviceOpts: k8s.KubeServiceProps = {
@@ -246,7 +277,7 @@ export class MyRedis extends Construct {
             volumes: [{
               name: `${name}-redis-conf`,
               configMap: {
-                name: `${name}-redis-conf`,
+                name: `${configMapName}`,
               },
             }],
           },

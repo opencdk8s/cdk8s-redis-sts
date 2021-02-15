@@ -38,6 +38,7 @@ new MyRedis(scope: Construct, name: string, opts: StsOpts)
 * **opts** (<code>[StsOpts](#opencdk8s-cdk8s-redis-sts-stsopts)</code>)  *No description*
   * **image** (<code>string</code>)  Container image. 
   * **namespace** (<code>string</code>)  namespace. 
+  * **configMapName** (<code>string</code>)  The name of the configmap to use instead of the default one. __*Optional*__
   * **createStorageClass** (<code>boolean</code>)  Option to create storage class, if enabled, a storage class will be created for the statefulset. __*Default*__: true
   * **env** (<code>Map<string, string></code>)  Environment variables to pass to the pod. __*Optional*__
   * **labels** (<code>Map<string, string></code>)  Additional labels to apply to resources. __*Default*__: none
@@ -100,6 +101,7 @@ Name | Type | Description
 -----|------|-------------
 **image**🔹 | <code>string</code> | Container image.
 **namespace**🔹 | <code>string</code> | namespace.
+**configMapName**?🔹 | <code>string</code> | The name of the configmap to use instead of the default one.<br/>__*Optional*__
 **createStorageClass**?🔹 | <code>boolean</code> | Option to create storage class, if enabled, a storage class will be created for the statefulset.<br/>__*Default*__: true
 **env**?🔹 | <code>Map<string, string></code> | Environment variables to pass to the pod.<br/>__*Optional*__
 **labels**?🔹 | <code>Map<string, string></code> | Additional labels to apply to resources.<br/>__*Default*__: none
