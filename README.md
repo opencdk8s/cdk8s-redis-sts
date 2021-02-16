@@ -1,4 +1,9 @@
-# cdk8s-redis-sts  ![Release](https://github.com/opencdk8s/cdk8s-redis-sts/workflows/Release/badge.svg?branch=development)
+# cdk8s-redis-sts  
+![Release](https://github.com/opencdk8s/cdk8s-redis-sts/workflows/Release/badge.svg?branch=development)
+[![npm version](https://badge.fury.io/js/%40opencdk8s%2Fcdk8s-redis-sts.svg)](https://badge.fury.io/js/%40opencdk8s%2Fcdk8s-redis-sts)
+[![PyPI version](https://badge.fury.io/py/cdk8s-redis-sts.svg)](https://badge.fury.io/py/cdk8s-redis-sts)
+![npm](https://img.shields.io/npm/dt/@opencdk8s/cdk8s-redis-sts?label=npm&color=green) 
+![PyPi](https://img.shields.io/pypi/dm/cdk8s-redis-sts?label=pypi&color=green) 
 
 Create a Replicated Redis Statefulset on Kubernetes, powered by the [cdk8s project](https://cdk8s.io) 🚀
 
